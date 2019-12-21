@@ -16,7 +16,7 @@ library(ggmap)
 library(ggplot2)
 library(glue)
 library(digest)
-key = "AIzaSyCgZWPFV2EPu4ysIw9YVI8StOEoTtJ7zjw"
+key = "API KEY HERE"
 register_google(key = key, write = TRUE)
 
 

@@ -21,7 +21,7 @@ melData_bottomPrice <- melData[with(melData,order(Price)),]
 melData_topPrice20 <- melData_topPrice[1:20,]
 melData_bottomPrice20<- melData_bottomPrice[1:20,]
 
-key = "AIzaSyCgZWPFV2EPu4ysIw9YVI8StOEoTtJ7zjw"
+key = "API KEY HERE"
 register_google(key = key, write = TRUE)
 
 

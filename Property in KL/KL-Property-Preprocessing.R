@@ -1,4 +1,5 @@
 library(data.table)
+library(dplyr)
 dataKL <- read.csv("data_kaggle.csv")
 str(dataKL)
 colLocation<-sum(is.na(dataKL$Location))
@@ -55,4 +56,23 @@ str(data5)
 
 data5$finalRooms <- sapply(as.character(data5$Rooms), function(x) eval(parse(text = x)))
 
+data5 <- data5%>%select(1:2,4:9)
+colnames(data5)[colnames(data5)=="finalRooms"] <-"Rooms"
+colnames(data5)[colnames(data5)=="Price in RM"] <-"Price"
+colnames(data5)[colnames(data5)=="Car.Parks"] <-"P.Slot" ##Parking Slot
+colnames(data5)[colnames(data5)=="Property.Type"] <-"Type"
+
+##------------------------------Hotdeck imputations---------------------------------#
+
+library(lattice)
+library(mice)
+library(HotDeckImputation)
+
+md.pattern(data5)
+data5_SUB <- data5%>%select(3:4,6:8)
+md.pattern(data5_SUB)
+
+methods(mice)
+
+tempData <- mice(data5,m=5,maxit=2,meth='cart',seed=500)
 

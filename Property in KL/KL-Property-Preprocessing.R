@@ -76,3 +76,7 @@ methods(mice)
 
 tempData <- mice(data5,m=5,maxit=2,meth='cart',seed=500)
 
+completedData <- complete(tempData,1)
+
+md.pattern(completedData)
+

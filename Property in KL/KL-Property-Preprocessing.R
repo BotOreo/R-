@@ -62,7 +62,7 @@ colnames(data5)[colnames(data5)=="Price in RM"] <-"Price"
 colnames(data5)[colnames(data5)=="Car.Parks"] <-"P.Slot" ##Parking Slot
 colnames(data5)[colnames(data5)=="Property.Type"] <-"Type"
 
-##------------------------------Hotdeck imputations---------------------------------#
+##------------------------------MICE imputations---------------------------------#
 
 library(lattice)
 library(mice)
@@ -80,3 +80,4 @@ completedData <- complete(tempData,1)
 
 md.pattern(completedData)
 
+write.csv(completedData,"Completed_Dataset.csv")
